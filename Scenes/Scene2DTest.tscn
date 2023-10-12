@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://hasnvjukss8p"]
+
+[ext_resource type="Script" path="res://Player.cs" id="1_35dq8"]
+[ext_resource type="Texture2D" uid="uid://bxf3bkyv38w13" path="res://art/eye2.png" id="1_dp3r7"]
+[ext_resource type="Texture2D" uid="uid://clst2kmpqlw7i" path="res://art/eye1.png" id="2_qr33p"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nayfh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dp3r7")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qr33p")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qw6ag"]
+radius = 8.0
+
+[node name="Player" type="Area2D"]
+position = Vector2(100, 100)
+script = ExtResource("1_35dq8")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nayfh")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qw6ag")
